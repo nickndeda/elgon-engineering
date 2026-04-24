@@ -1,0 +1,175 @@
+/* RESET */
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background: #0b0b0b;
+  font-family: Arial, sans-serif;
+  color: white;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+/* APP WRAPPER */
+.app {
+  position: relative;
+}
+
+/* NAVBAR */
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 40px;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+nav ul {
+  display: flex;
+  gap: 25px;
+  list-style: none;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #aaa;
+  transition: 0.3s;
+}
+
+nav ul li a:hover {
+  color: white;
+}
+
+/* HERO CAROUSEL */
+.hero-carousel {
+  position: relative;
+  width: 100%;
+  height: 80vh;
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: opacity 1.5s ease-in-out;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0,0,0,0.45);
+  text-align: center;
+}
+
+.hero-overlay h1 {
+  font-size: 3rem;
+  letter-spacing: 2px;
+}
+
+.hero-overlay p {
+  color: #ccc;
+}
+
+/* SERVICES */
+.services {
+  padding: 80px 40px;
+  text-align: center;
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+}
+
+.card {
+  background: #111;
+  padding: 30px;
+  border: 1px solid #222;
+  transition: 0.4s ease;
+  text-align: left;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  border-color: #fff;
+}
+
+.card h3 {
+  margin-bottom: 10px;
+}
+
+/* ABOUT + CONTACT (UNIFIED PREMIUM STYLE) */
+.info-section {
+  padding: 80px 40px;
+  margin: 40px auto;
+  max-width: 900px;
+
+  background: #111;
+  border: 1px solid #222;
+  border-radius: 12px;
+
+  text-align: center;
+  transition: 0.4s ease;
+}
+
+.info-section:hover {
+  transform: translateY(-6px);
+  border-color: #fff;
+}
+
+.info-section h2 {
+  font-size: 2rem;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+}
+
+.info-section p {
+  color: #aaa;
+  line-height: 1.6;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 30px;
+  border-top: 1px solid #222;
+  color: #777;
+}
+/* BRAND (LOGO + TITLE) */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* LOGO STYLE */
+.logo {
+  width: 80px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* NAVBAR CLEANUP */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
