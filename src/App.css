@@ -8,6 +8,7 @@ html, body, #root {
   font-family: Arial, sans-serif;
   color: white;
 }
+
 html {
   scroll-behavior: smooth;
 }
@@ -18,9 +19,10 @@ html {
 }
 
 /* NAVBAR */
-nav {
+.navbar {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 20px 40px;
   background: rgba(0,0,0,0.6);
   backdrop-filter: blur(10px);
@@ -33,6 +35,8 @@ nav ul {
   display: flex;
   gap: 25px;
   list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 nav ul li a {
@@ -45,7 +49,20 @@ nav ul li a:hover {
   color: white;
 }
 
-/* HERO CAROUSEL */
+/* BRAND */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  width: 80px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* HERO */
 .hero-carousel {
   position: relative;
   width: 100%;
@@ -70,6 +87,7 @@ nav ul li a:hover {
   align-items: center;
   background: rgba(0,0,0,0.45);
   text-align: center;
+  padding: 0 20px;
 }
 
 .hero-overlay h1 {
@@ -110,16 +128,14 @@ nav ul li a:hover {
   margin-bottom: 10px;
 }
 
-/* ABOUT + CONTACT (UNIFIED PREMIUM STYLE) */
+/* INFO SECTIONS */
 .info-section {
   padding: 80px 40px;
   margin: 40px auto;
   max-width: 900px;
-
   background: #111;
   border: 1px solid #222;
   border-radius: 12px;
-
   text-align: center;
   transition: 0.4s ease;
 }
@@ -147,29 +163,72 @@ footer {
   border-top: 1px solid #222;
   color: #777;
 }
-/* BRAND (LOGO + TITLE) */
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+
+
+@media (max-width: 1024px) {
+  .hero-overlay h1 {
+    font-size: 2.5rem;
+  }
+
+  .services {
+    padding: 60px 30px;
+  }
 }
 
-/* LOGO STYLE */
-.logo {
-  width: 80px;
-  height: auto;
-  object-fit: contain;
+@media (max-width: 768px) {
+  /* NAVBAR STACK */
+  .navbar {
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+
+  /* HERO */
+  .hero-carousel {
+    height: 60vh;
+  }
+
+  .hero-overlay h1 {
+    font-size: 2rem;
+  }
+
+  .hero-overlay p {
+    font-size: 0.9rem;
+  }
+
+  /* SERVICES */
+  .services {
+    padding: 50px 20px;
+  }
+
+  /* INFO SECTIONS */
+  .info-section {
+    padding: 50px 20px;
+    margin: 20px;
+  }
 }
 
-/* NAVBAR CLEANUP */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 40px;
-  background: rgba(0,0,0,0.6);
-  backdrop-filter: blur(10px);
-  position: sticky;
-  top: 0;
-  z-index: 10;
+@media (max-width: 480px) {
+  /* EXTRA SMALL DEVICES */
+  .hero-overlay h1 {
+    font-size: 1.5rem;
+  }
+
+  .hero-overlay p {
+    font-size: 0.8rem;
+  }
+
+  .logo {
+    width: 60px;
+  }
+
+  .card {
+    padding: 20px;
+  }
 }
