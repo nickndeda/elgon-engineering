@@ -4,9 +4,9 @@ html, body, #root {
   padding: 0;
   width: 100%;
   height: 100%;
-  background: #0b0b0b;
+  background: var(--bg);
   font-family: Arial, sans-serif;
-  color: white;
+  color: var(--text);
 }
 
 html {
@@ -29,6 +29,13 @@ html {
   position: sticky;
   top: 0;
   z-index: 10;
+  border-bottom: 1px solid var(--border);
+}
+
+@media (prefers-color-scheme: light) {
+  .navbar {
+    background: rgba(255,255,255,0.9);
+  }
 }
 
 nav ul {
@@ -41,12 +48,12 @@ nav ul {
 
 nav ul li a {
   text-decoration: none;
-  color: #aaa;
+  color: var(--text);
   transition: 0.3s;
 }
 
 nav ul li a:hover {
-  color: white;
+  color: var(--text-h);
 }
 
 /* BRAND */
@@ -54,6 +61,11 @@ nav ul li a:hover {
   display: flex;
   align-items: center;
   gap: 10px;
+  color: var(--text-h);
+}
+
+.brand h2 {
+  color: var(--text-h);
 }
 
 .logo {
@@ -93,16 +105,28 @@ nav ul li a:hover {
 .hero-overlay h1 {
   font-size: 3rem;
   letter-spacing: 2px;
+  color: var(--text-h);
 }
 
 .hero-overlay p {
-  color: #ccc;
+  color: var(--text);
+}
+
+@media (prefers-color-scheme: light) {
+  .hero-overlay {
+    background: rgba(0,0,0,0.25);
+  }
 }
 
 /* SERVICES */
 .services {
   padding: 80px 40px;
   text-align: center;
+}
+
+.subtitle {
+  color: var(--text);
+  margin-bottom: 30px;
 }
 
 .service-grid {
@@ -112,20 +136,33 @@ nav ul li a:hover {
 }
 
 .card {
-  background: #111;
+  background: rgba(0,0,0,0.5);
   padding: 30px;
-  border: 1px solid #222;
+  border: 1px solid var(--border);
   transition: 0.4s ease;
   text-align: left;
+  color: var(--text);
 }
 
 .card:hover {
   transform: translateY(-8px);
-  border-color: #fff;
+  border-color: var(--text-h);
+}
+
+@media (prefers-color-scheme: light) {
+  .card {
+    background: #f8f8f8;
+  }
 }
 
 .card h3 {
-  margin-bottom: 10px;
+  margin: 0 0 10px 0;
+  color: var(--text-h);
+}
+
+.card p {
+  margin: 0;
+  color: var(--text);
 }
 
 /* INFO SECTIONS */
@@ -133,8 +170,8 @@ nav ul li a:hover {
   padding: 80px 40px;
   margin: 40px auto;
   max-width: 900px;
-  background: #111;
-  border: 1px solid #222;
+  background: rgba(0,0,0,0.5);
+  border: 1px solid var(--border);
   border-radius: 12px;
   text-align: center;
   transition: 0.4s ease;
@@ -142,26 +179,43 @@ nav ul li a:hover {
 
 .info-section:hover {
   transform: translateY(-6px);
-  border-color: #fff;
+  border-color: var(--text-h);
 }
 
 .info-section h2 {
   font-size: 2rem;
   letter-spacing: 2px;
   margin-bottom: 15px;
+  color: var(--text-h);
 }
 
 .info-section p {
-  color: #aaa;
+  color: var(--text);
   line-height: 1.6;
+}
+
+@media (prefers-color-scheme: light) {
+  .info-section {
+    background: #f8f8f8;
+  }
 }
 
 /* FOOTER */
 footer {
   text-align: center;
   padding: 30px;
-  border-top: 1px solid #222;
-  color: #777;
+  border-top: 1px solid var(--border);
+  color: var(--text);
+}
+
+.contact-link {
+  color: var(--text-h);
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.contact-link:hover {
+  text-decoration: underline;
 }
 
 
