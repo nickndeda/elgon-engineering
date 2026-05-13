@@ -53,7 +53,7 @@ function App() {
   <p>
     Phone:{" "}
     <a href="tel:+254785468526" className="contact-link">
-      +254 785 468 526
+      +254 722 876 529
     </a>
   </p>
 </motion.section>
