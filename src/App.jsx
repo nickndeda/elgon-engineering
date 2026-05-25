@@ -27,8 +27,7 @@ function App() {
 >
   <h2>About Us</h2>
   <p>
-    Elgon Engineering is committed to delivering top-tier engineering
-    services across multiple industries with precision, innovation, and reliability.
+    At Elgon Engineering, we provide innovative and reliable engineering solutions tailored to meet the needs of various industries with excellence and precision
   </p>
 </motion.section>
 
