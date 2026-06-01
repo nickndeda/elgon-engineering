@@ -2,6 +2,9 @@ import Navbar from "./Navbar";
 import Services from "./Services";
 import Footer from "./Footer";
 import HeroCarousel from "./HeroCarousel";
+import BookingForm from "./BookingForm";
+import MapSection from "./MapSection";
+import WhatsAppButton from "./WhatsAppButton";
 import "./App.css";
 import { motion } from "framer-motion";
 
@@ -13,8 +16,12 @@ function App() {
       {/* HERO */}
       <HeroCarousel />
 
+      <WhatsAppButton />
+
       {/* SERVICES */}
       <Services />
+
+
 
       {/* ABOUT */}
       <motion.section
@@ -56,6 +63,12 @@ function App() {
     </a>
   </p>
 </motion.section>
+      
+      {/* MAP */}
+      <MapSection />
+
+      {/* BOOKING (bottom) */}
+      <BookingForm />
 
       <Footer />
     </div>

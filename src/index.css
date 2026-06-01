@@ -72,6 +72,24 @@ body {
   box-sizing: border-box;
 }
 
+/* Smooth scrolling and focus outlines for accessibility */
+html { scroll-behavior: smooth; }
+*:focus { outline: 3px solid rgba(192,132,252,0.18); outline-offset: 3px; }
+
+/* Navbar hidden menu */
+.navbar { display:flex; justify-content:space-between; align-items:center; padding:18px; }
+.navbar .brand { display:flex; align-items:center; gap:12px; }
+.navbar .logo { width:44px; height:44px; object-fit:contain; }
+.nav-toggle { background:transparent; border:1px solid var(--border); color:var(--text-h); padding:8px 12px; border-radius:8px; }
+
+.nav-overlay { position:fixed; inset:0; background:rgba(10,10,12,0.6); display:none; align-items:center; justify-content:center; z-index:1200; }
+.nav-overlay.open { display:flex; }
+.nav-inner { background:linear-gradient(180deg, rgba(20,20,28,0.98), rgba(14,14,20,0.98)); padding:40px; border-radius:14px; width:min(680px, 92%); box-shadow:var(--shadow); border:1px solid var(--border); }
+.nav-inner .close { background:transparent; border:none; color:var(--text); font-size:22px; float:right; }
+.nav-inner ul { list-style:none; padding:0; margin:24px 0 0; display:grid; gap:12px; }
+.nav-inner a { color:var(--text-h); text-decoration:none; font-size:20px; }
+
+
 h1,
 h2 {
   font-family: var(--heading);
@@ -115,3 +133,104 @@ code {
   padding: 4px 8px;
   background: var(--code-bg);
 }
+
+
+/* Contact floater using the uploaded icon artwork */
+.contact-floater {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 1000;
+}
+.contact-button {
+  width: 60px;
+  height: 60px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  transition: transform 120ms ease;
+  padding: 0;
+  position: relative;
+}
+.contact-button img {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+.contact-button::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  white-space: nowrap;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  opacity: 0;
+  visibility: hidden;
+  background: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 10px;
+  border-radius: 999px;
+  transition: opacity 120ms ease, transform 120ms ease;
+  pointer-events: none;
+}
+.contact-button:hover::after,
+.contact-button:focus::after {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+.contact-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 26px 40px rgba(0, 0, 0, 0.28);
+}
+
+@media (max-width: 640px) {
+  .contact-floater {
+    right: 14px;
+    bottom: 14px;
+    gap: 10px;
+  }
+  .contact-button {
+    width: 56px;
+    height: 56px;
+  }
+  .contact-button img {
+    width: 26px;
+    height: 26px;
+  }
+}
+
+/* Booking form */
+.booking-section { padding: 48px 18px; max-width: 980px; margin: 40px auto; text-align: left; }
+.booking-section h2 { margin-bottom: 6px; }
+.booking-section .muted { color: var(--text); opacity: 0.9; margin-bottom: 18px; }
+.booking-form { display: grid; gap: 12px; }
+.booking-form .row { display: flex; gap: 12px; }
+.booking-form input, .booking-form select, .booking-form textarea {
+  background: var(--code-bg);
+  color: var(--text-h);
+  border: 1px solid var(--border);
+  padding: 10px 12px;
+  border-radius: 8px;
+  flex: 1;
+}
+.booking-form textarea { min-height: 120px; resize: vertical; }
+.booking-form .actions { display:flex; justify-content:flex-end; }
+.booking-form .primary { background: linear-gradient(90deg,var(--accent), #6ee7b7); border:none; padding: 10px 16px; border-radius:8px; color: #06111a; font-weight:700; }
+
+/* Map section */
+.map-section { padding: 40px 18px; max-width: 980px; margin: 20px auto; text-align: left; }
+.map-wrap { height: 360px; border-radius: 12px; overflow: hidden; border:1px solid var(--border); box-shadow: var(--shadow); }
+.map-wrap iframe { width: 100%; height: 100%; border: 0; }
+.map-actions { display:flex; gap:18px; align-items:center; margin-top:12px; }
+.map-actions .button.ghost { padding:8px 12px; border-radius:8px; border:1px solid var(--accent-border); background:transparent; color:var(--text-h); text-decoration:none; }
+.location-info { color: var(--text); }
+
