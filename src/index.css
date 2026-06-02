@@ -158,7 +158,8 @@ code {
   padding: 0;
   position: relative;
 }
-.contact-button img {
+.contact-button img,
+.contact-button svg {
   width: 30px;
   height: 30px;
   object-fit: contain;
@@ -224,7 +225,7 @@ code {
 }
 .booking-form textarea { min-height: 120px; resize: vertical; }
 .booking-form .actions { display:flex; justify-content:flex-end; }
-.booking-form .primary { background: linear-gradient(90deg,var(--accent), #6ee7b7); border:none; padding: 10px 16px; border-radius:8px; color: #06111a; font-weight:700; }
+.booking-form .primary { background: linear-gradient(90deg,var(--accent), #5a5757); border:none; padding: 10px 16px; border-radius:8px; color: #06111a; font-weight:700; }
 
 /* Map section */
 .map-section { padding: 40px 18px; max-width: 980px; margin: 20px auto; text-align: left; }

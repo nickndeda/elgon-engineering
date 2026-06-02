@@ -1,7 +1,8 @@
 function Footer() {
+  const currentYear = new Date().getFullYear()
   return (
     <footer>
-      <p>© 2026 Elgon Engineering. All rights reserved.</p>
+      <p>© {currentYear} Elgon Engineering. All rights reserved.</p>
     </footer>
   );
 }
