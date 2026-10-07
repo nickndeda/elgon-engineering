@@ -29,8 +29,22 @@ const BookingForm = () => {
       "Message:",
       form.message,
     ].join("\n");
+    const encodedSubject = encodeURIComponent(subject);
+    const encodedBody = encodeURIComponent(body);
+    const mailtoUrl = `mailto:${to}?subject=${encodedSubject}&body=${encodedBody}`;
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(to)}&su=${encodedSubject}&body=${encodedBody}`;
+    const isMobile = /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
-    window.location.href = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    if (isMobile) {
+      window.location.href = mailtoUrl;
+    } else {
+      const gmailWindow = window.open(gmailUrl, "_blank", "noopener,noreferrer");
+
+      if (!gmailWindow) {
+        window.location.href = gmailUrl;
+      }
+    }
+
     setSubmitted(true);
   }
 
