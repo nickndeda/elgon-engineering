@@ -1,12 +1,11 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 const BookingForm = () => {
   const [form, setForm] = useState({
     name: "",
     email: "",
     phone: "",
-    service: "Consultation",
-    date: "",
+    service: "Electrical",
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
@@ -20,43 +19,67 @@ const BookingForm = () => {
     e.preventDefault();
 
     const to = "info@elgonengineering.com";
-    const subject = `Booking Request: ${form.service} — ${form.name}`;
-    const body = `Name: ${form.name}%0D%0AEmail: ${form.email}%0D%0APhone: ${form.phone}%0D%0AService: ${form.service}%0D%0APreferred Date/Time: ${form.date}%0D%0A%0D%0AMessage:%0D%0A${form.message}`;
+    const subject = `Quote Request: ${form.service} - ${form.name}`;
+    const body = [
+      `Name: ${form.name}`,
+      `Email: ${form.email || "Not supplied"}`,
+      `Phone: ${form.phone}`,
+      `Service type: ${form.service}`,
+      "",
+      "Message:",
+      form.message,
+    ].join("\n");
 
-    // Open mail client with prefilled message. Replace with server endpoint when available.
-    window.location.href = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${body}`;
+    window.location.href = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     setSubmitted(true);
   }
 
   return (
     <section id="booking" className="booking-section">
-      <h2>Request a Booking</h2>
-      <p className="muted">No payment required — we'll follow up by email.</p>
+      <p className="section-kicker">Quote request</p>
+      <h2>Request a quote</h2>
+      <p className="muted">Share the job type, site details and urgency. No payment is required.</p>
 
       {!submitted ? (
         <form className="booking-form" onSubmit={handleSubmit}>
           <div className="row">
-            <input name="name" placeholder="Full name" value={form.name} onChange={handleChange} required />
-            <input name="email" type="email" placeholder="Email address" value={form.email} onChange={handleChange} required />
+            <label>
+              <span>Name</span>
+              <input name="name" placeholder="Full name" value={form.name} onChange={handleChange} required />
+            </label>
+            <label>
+              <span>Phone</span>
+              <input name="phone" type="tel" placeholder="+254..." value={form.phone} onChange={handleChange} required />
+            </label>
           </div>
           <div className="row">
-            <input name="phone" placeholder="Phone number" value={form.phone} onChange={handleChange} />
-            <select name="service" value={form.service} onChange={handleChange}>
-              <option>Consultation</option>
-              <option>Engineering Services</option>
-              <option>Maintenance Services</option>
-            </select>
+            <label>
+              <span>Service type</span>
+              <select name="service" value={form.service} onChange={handleChange}>
+                <option>Electrical</option>
+                <option>Mechanical</option>
+                <option>Precision engineering</option>
+                <option>Maintenance and repairs</option>
+                <option>Consulting</option>
+              </select>
+            </label>
+            <label>
+              <span>Email optional</span>
+              <input name="email" type="email" placeholder="name@example.com" value={form.email} onChange={handleChange} />
+            </label>
           </div>
-          <input name="date" type="datetime-local" value={form.date} onChange={handleChange} />
-          <textarea name="message" placeholder="Tell us about your requirements" value={form.message} onChange={handleChange} />
+          <label>
+            <span>Message</span>
+            <textarea name="message" placeholder="Tell us about the site, equipment, measurements, deadline or fault symptoms." value={form.message} onChange={handleChange} required />
+          </label>
 
           <div className="actions">
-            <button type="submit" className="primary">Send Request</button>
+            <button type="submit" className="button primary">Send quote request</button>
           </div>
         </form>
       ) : (
         <div className="booking-success">
-          <p>Thank you. Your booking request was prepared in your mail client — please confirm to send.</p>
+          <p>Thank you. Your quote request was prepared in your mail client. Please confirm to send.</p>
         </div>
       )}
     </section>

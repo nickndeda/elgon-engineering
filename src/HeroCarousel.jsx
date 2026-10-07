@@ -24,35 +24,67 @@ const images = [
   c10,
 ];
 
+
+const proofPoints = [
+  ["Multi-disciplinary", "engineering solutions"],
+  ["End-to-end", "project support"],
+  ["Quality-focused", "workmanship and delivery"],
+  ["Safety-conscious", "engineering practices"],
+];
+
 function HeroCarousel() {
   const [current, setCurrent] = useState(0);
 
   useEffect(() => {
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (reduceMotion.matches) return undefined;
+
     const interval = setInterval(() => {
       setCurrent((prev) => (prev + 1) % images.length);
-    }, 3000);
+    }, 4200);
 
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className="hero-carousel">
-      {images.map((img, i) => (
-        <div
-          key={i}
-          className="slide"
-          style={{
-            backgroundImage: `url(${img})`,
-            opacity: i === current ? 1 : 0,
-          }}
-        />
-      ))}
+    <section id="home" className="hero-carousel blueprint-surface" aria-label="Elgon Engineering introduction">
+      <div className="hero-copy">
+        <p className="section-kicker">Kitale, Kenya | Electrical, mechanical and precision engineering</p>
+        <h1>Specified engineering for industrial sites.</h1>
+        <p className="hero-lede">
+          Elgon Engineering helps facility teams move from site requirement to safe installation, fabrication or repair.
+        </p>
 
-      <div className="hero-overlay">
-        <h1>Elgon Engineering</h1>
-        <p>Innovative Engineering Solutions</p>
+        <div className="hero-actions" aria-label="Primary actions">
+          <a className="button primary" href="#booking">Request a quote</a>
+          <a className="button secondary" href="#services">View services</a>
+        </div>
+
+        <dl className="proof-grid" aria-label="Company proof points">
+          {proofPoints.map(([value, label]) => (
+            <div key={label}>
+              <dt>{value}</dt>
+              <dd>{label}</dd>
+            </div>
+          ))}
+        </dl>
       </div>
-    </div>
+
+      <div className="hero-media" aria-label="Workshop and engineering project image slots">
+        {images.slice(0, 5).map((img, i) => (
+          <img
+            key={img}
+            src={img}
+            alt={`Elgon Engineering project photo slot ${i + 1}`}
+            className={i === current % 5 ? "active" : ""}
+            loading={i === 0 ? "eager" : "lazy"}
+          />
+        ))}
+        <div className="image-slot-label">
+          Replace with real workshop, machinery and completed project photos
+        </div>
+      </div>
+    </section>
   );
 }
 
